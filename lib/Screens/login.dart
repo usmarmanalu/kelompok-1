@@ -30,7 +30,7 @@ signIn() async {
 
     if (authCredential.uid.isNotEmpty) {
       Navigator.push(GlobalContextService.navigatorKey.currentContext!,
-          MaterialPageRoute(builder: (context) => const Dasboard()));
+          MaterialPageRoute(builder: (context) =>const Dasboard()));
     } else {
       Fluttertoast.showToast(msg: "Something is wrong");
     }

@@ -44,7 +44,7 @@ class DetailBarang extends StatelessWidget {
                 Navigator.push(
                   GlobalContextService.navigatorKey.currentContext!,
                   MaterialPageRoute(
-                    builder: (context) => const InputBarang(),
+                    builder: (context) =>const InputBarang(),
                   ),
                 );
               },

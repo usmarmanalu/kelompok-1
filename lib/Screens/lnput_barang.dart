@@ -293,7 +293,7 @@ class _InputBarangState extends State<InputBarang> {
                                   GlobalContextService
                                       .navigatorKey.currentContext!,
                                   MaterialPageRoute(
-                                    builder: (context) => DetailBarang(),
+                                    builder: (context) =>DetailBarang(),
                                   ),
                                 );
                               },
