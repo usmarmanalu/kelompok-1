@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Ubuntu',
       ),
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: const SplashScreen(),
     );
   }
 }

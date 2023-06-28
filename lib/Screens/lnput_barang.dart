@@ -132,11 +132,11 @@ class _InputBarangState extends State<InputBarang> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(20)),
@@ -322,7 +322,7 @@ class _InputBarangState extends State<InputBarang> {
                                   GlobalContextService
                                       .navigatorKey.currentContext!,
                                   MaterialPageRoute(
-                                    builder: (context) => Dasboard(),
+                                    builder: (context) => const Dasboard(),
                                   ),
                                 );
                               },

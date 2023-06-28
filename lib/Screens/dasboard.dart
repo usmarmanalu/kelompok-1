@@ -113,7 +113,7 @@ class _DasboardState extends State<Dasboard> {
                     Navigator.push(
                       GlobalContextService.navigatorKey.currentContext!,
                       MaterialPageRoute(
-                        builder: (context) => InputBarang(),
+                        builder: (context) => const InputBarang(),
                       ),
                     );
                   },

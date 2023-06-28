@@ -30,7 +30,7 @@ signIn() async {
 
     if (authCredential.uid.isNotEmpty) {
       Navigator.push(GlobalContextService.navigatorKey.currentContext!,
-          MaterialPageRoute(builder: (context) => Dasboard()));
+          MaterialPageRoute(builder: (context) => const Dasboard()));
     } else {
       Fluttertoast.showToast(msg: "Something is wrong");
     }
@@ -163,14 +163,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: ElevatedButton.styleFrom(
                       primary: blueColor, elevation: 0),
                   onPressed: () {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text('Berhasil Masuk'),
-                        duration: Duration(
-                          seconds: 2,
-                        ),
-                      ),
-                    );
                     signIn();
                   },
                   child: Center(

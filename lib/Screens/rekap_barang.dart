@@ -44,7 +44,7 @@ class DetailBarang extends StatelessWidget {
                 Navigator.push(
                   GlobalContextService.navigatorKey.currentContext!,
                   MaterialPageRoute(
-                    builder: (context) => InputBarang(),
+                    builder: (context) => const InputBarang(),
                   ),
                 );
               },
@@ -79,7 +79,7 @@ class DetailBarang extends StatelessWidget {
           Navigator.push(
             GlobalContextService.navigatorKey.currentContext!,
             MaterialPageRoute(
-              builder: (context) => Dasboard(),
+              builder: (context) => const Dasboard(),
             ),
           );
         },

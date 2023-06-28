@@ -15,11 +15,11 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Timer(
-      Duration(seconds: 4),
+      const Duration(seconds: 4),
       () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: ((context) => LoginScreen())),
+          MaterialPageRoute(builder: ((context) => const LoginScreen())),
         );
       },
     );
@@ -38,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
               'assets/images/logo.png',
               scale: 2.5,
             ),
-            CircularProgressIndicator(
+            const CircularProgressIndicator(
               color: blueColor,
             ),
           ],

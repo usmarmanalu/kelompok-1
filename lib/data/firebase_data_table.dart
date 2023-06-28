@@ -5,6 +5,8 @@ import '../constant/color.dart';
 import '../main.dart';
 
 class FirebaseDataTable extends StatefulWidget {
+  const FirebaseDataTable({super.key});
+
   @override
   State<FirebaseDataTable> createState() => _FirebaseDataTableState();
 }
@@ -24,7 +26,7 @@ class _FirebaseDataTableState extends State<FirebaseDataTable> {
         }
 
         if (!snapshot.hasData) {
-          return Stack(
+          return const Stack(
             children: [
               CircularProgressIndicator(),
             ],
@@ -33,10 +35,11 @@ class _FirebaseDataTableState extends State<FirebaseDataTable> {
 
         return Flexible(
           child: SingleChildScrollView(
-            padding: EdgeInsets.only(bottom: 50),
+            padding: const EdgeInsets.only(bottom: 50),
             child: DataTable(
               columnSpacing: 15,
               headingRowHeight: 45,
+              // ignore: deprecated_member_use
               dataRowHeight: 35,
               border: TableBorder.all(
                 color: Colors.orange,
@@ -132,7 +135,7 @@ class _FirebaseDataTableState extends State<FirebaseDataTable> {
                     // update atau edit data secara realtime ke firebase
                     _editData(document);
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.edit,
                     color: iconUpdate,
                   ),
@@ -146,7 +149,7 @@ class _FirebaseDataTableState extends State<FirebaseDataTable> {
                       builder: (context) {
                         return AlertDialog(
                           title: Text("Yakin ingin menghapus?"),
-                          content: Text("tekan ya jika ingin melanjutkan"),
+                          content:  Text("tekan ya jika ingin melanjutkan"),
                           actions: [
                             ElevatedButton(
                               onPressed: () {
