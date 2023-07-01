@@ -5,28 +5,29 @@ Framework Dart dan Firebase Firestore sebagai database penyimpanan datanya.
 # Aplikasi Manajemen Data Barang
 
 # Package yang digunakan :
-* https://pub.dev/packages/firebase_auth
-* https://pub.dev/packages/cloud_firestore
-* https://pub.dev/packages/firebase_core
-* https://pub.dev/packages/fluttertoast
+
+- https://pub.dev/packages/firebase_auth
+- https://pub.dev/packages/cloud_firestore
+- https://pub.dev/packages/firebase_core
+- https://pub.dev/packages/fluttertoast
 
 ## Getting Started
 
-* create firebase authencitation
-* create firebase cloud firestore
-* register app
-* install google-services.json
-* add firebase SDK
+- create firebase authencitation
+- create firebase cloud firestore
+- register app
+- install google-services.json
+- add firebase SDK
 
-* run flutter clean
-* run flutter pub get
-* flutter run
+- run flutter clean
+- run flutter pub get
+- flutter run
 
 # Documentation
 
-* https://firebase.flutter.dev/docs/
-* https://docs.flutter.dev/
-https://firebase.google.com/docs/
+- https://firebase.flutter.dev/docs/
+- https://docs.flutter.dev/
+- https://firebase.google.com/docs/
 
 # MOBILE PROGRAMMING
 
@@ -34,5 +35,5 @@ https://firebase.google.com/docs/
 
 1. <USMAR_MANALU>
 2. <ST.WULAN_APRIANTI>
-3. <M.\_SAIFFUDIN>
+3. <M.SAIFFUDIN>
 4. <HARIS_FADILAH>

@@ -149,7 +149,7 @@ class _FirebaseDataTableState extends State<FirebaseDataTable> {
                       builder: (context) {
                         return AlertDialog(
                           title: Text("Yakin ingin menghapus?"),
-                          content:  Text("tekan ya jika ingin melanjutkan"),
+                          content: Text("tekan ya jika ingin melanjutkan"),
                           actions: [
                             ElevatedButton(
                               onPressed: () {

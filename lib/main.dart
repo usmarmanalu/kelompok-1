@@ -6,7 +6,7 @@ void main() async {
   // inisialisai firebase
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp( 
+    return MaterialApp(
       // Set navigatorkey in main method
       navigatorKey: GlobalContextService.navigatorKey,
       title: 'Mobile Programming',
@@ -29,7 +29,6 @@ class MyApp extends StatelessWidget {
 
 /* https://stackoverflow.com/questions/68695028/error-undefined-name-context-in-flutter
 GlobalcontextService*/
-
 class GlobalContextService {
   static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 }

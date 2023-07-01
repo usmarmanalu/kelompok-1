@@ -13,16 +13,16 @@ class InputBarang extends StatefulWidget {
 }
 
 class _InputBarangState extends State<InputBarang> {
-  TextEditingController _namaBarang = TextEditingController();
-  TextEditingController _jenisBarang = TextEditingController();
-  TextEditingController _kondisiBarang = TextEditingController();
-  TextEditingController _tanggalMasukBarang = TextEditingController();
-  TextEditingController _namaDistrubutor = TextEditingController();
-  TextEditingController _alamat = TextEditingController();
+  final TextEditingController _namaBarang = TextEditingController();
+  final TextEditingController _jenisBarang = TextEditingController();
+  final TextEditingController _kondisiBarang = TextEditingController();
+  final TextEditingController _tanggalMasukBarang = TextEditingController();
+  final TextEditingController _namaDistrubutor = TextEditingController();
+  final TextEditingController _alamat = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   // index dropdown button
-  List<String> jenisbrg = ["Box", "Pack", ""];
+  List<String> jenisbrg = ["Box", "Pack"];
   // fungsi menampilkan kalender
   Future<void> _selectDateFromPicker(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -44,10 +44,10 @@ class _InputBarangState extends State<InputBarang> {
 
 // fungsi mengirim data reference pada collection cloud firestore
   sendUserDataToDB() async {
-    CollectionReference _collectionRef =
+    CollectionReference collectionRef =
         FirebaseFirestore.instance.collection("data-barang");
 
-    return _collectionRef
+    return collectionRef
         .doc()
         .set({
           "nama-barang": _namaBarang.text,
@@ -65,7 +65,9 @@ class _InputBarangState extends State<InputBarang> {
             ),
           ),
         )
-        .catchError((error) => print("something is wrong. $error"));
+        .catchError(
+          (error) => print("something is wrong. $error"),
+        );
   }
 
   @override
@@ -77,7 +79,7 @@ class _InputBarangState extends State<InputBarang> {
         backgroundColor: blueColor,
         automaticallyImplyLeading: false,
         title: Container(
-          padding: EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Text(
             "Manajemen Data Barang",
             style: TextStyle(fontSize: 20),
@@ -88,12 +90,12 @@ class _InputBarangState extends State<InputBarang> {
         child: Stack(
           children: [
             Container(
-              margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+              margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    padding: EdgeInsets.only(left: 20, top: 5),
+                    padding: const EdgeInsets.only(left: 20, top: 5),
                     child: Center(
                       child: Text(
                         'Form Tambah Data',
@@ -109,7 +111,7 @@ class _InputBarangState extends State<InputBarang> {
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Form(
                       key: _formKey,
                       child: Column(
@@ -140,7 +142,7 @@ class _InputBarangState extends State<InputBarang> {
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(20)),
-                    child: TextField(
+                    child: TextFormField(
                       controller: _jenisBarang,
                       readOnly: true,
                       decoration: InputDecoration(
@@ -173,7 +175,7 @@ class _InputBarangState extends State<InputBarang> {
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Column(
                       children: [
                         TextFormField(
@@ -194,7 +196,7 @@ class _InputBarangState extends State<InputBarang> {
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: TextFormField(
                       controller: _tanggalMasukBarang,
                       readOnly: true,
@@ -219,7 +221,7 @@ class _InputBarangState extends State<InputBarang> {
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Column(
                       children: [
                         TextFormField(
@@ -240,7 +242,7 @@ class _InputBarangState extends State<InputBarang> {
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Column(
                       children: [
                         TextFormField(
@@ -257,7 +259,7 @@ class _InputBarangState extends State<InputBarang> {
                     height: 40,
                   ),
                   Container(
-                    padding: EdgeInsets.only(bottom: 50),
+                    padding: const EdgeInsets.only(bottom: 50),
                     child: Column(
                       children: [
                         ElevatedButton(
@@ -293,7 +295,7 @@ class _InputBarangState extends State<InputBarang> {
                                   GlobalContextService
                                       .navigatorKey.currentContext!,
                                   MaterialPageRoute(
-                                    builder: (context) =>DetailBarang(),
+                                    builder: (context) => DetailBarang(),
                                   ),
                                 );
                               },

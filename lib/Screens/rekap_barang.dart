@@ -25,7 +25,7 @@ Color getRandomColor() {
 }
 
 class DetailBarang extends StatelessWidget {
-  DetailBarang({super.key});
+  const DetailBarang({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +48,7 @@ class DetailBarang extends StatelessWidget {
                   ),
                 );
               },
-              child: ClipRect(
+              child: const ClipRect(
                 child: CircleAvatar(
                   radius: 23,
                   child: Icon(
@@ -64,8 +64,8 @@ class DetailBarang extends StatelessWidget {
       body: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Container(
-          margin: EdgeInsets.only(top: 20, left: 10, right: 10),
-          child: Column(
+          margin: const EdgeInsets.only(top: 20, left: 10, right: 10),
+          child: const Column(
             children: [
               FirebaseDataTable(),
             ],
@@ -83,7 +83,7 @@ class DetailBarang extends StatelessWidget {
             ),
           );
         },
-        child: Icon(Icons.logout),
+        child: const Icon(Icons.logout),
       ),
     );
   }

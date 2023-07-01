@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:kelompok_1/Screens/dasboard.dart';
+import 'package:kelompok_1/Screens/lupa_password.dart';
 import 'package:kelompok_1/main.dart';
 
 import '../constant/color.dart';
@@ -14,11 +14,13 @@ class LoginScreen extends StatefulWidget {
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
+final _keyValidatorLogin = GlobalKey<FormState>();
 TextEditingController _emailController = TextEditingController();
 TextEditingController _passwordController = TextEditingController();
 bool _obscureText = true;
 
-// percobaan authentikasi credential & validasi email dan passoword pada firebase
+// percobaan proses authentikasi credential & validasi email dan passoword pada firebase
+// https://firebase.flutter.dev/docs/auth/usage/#emailpassword-registration--sign-in
 signIn() async {
   try {
     //  mengautentikasi pengguna dengan menggunakan email dan password
@@ -30,7 +32,7 @@ signIn() async {
 
     if (authCredential.uid.isNotEmpty) {
       Navigator.push(GlobalContextService.navigatorKey.currentContext!,
-          MaterialPageRoute(builder: (context) =>const Dasboard()));
+          MaterialPageRoute(builder: (context) => const Dasboard()));
     } else {
       Fluttertoast.showToast(msg: "Something is wrong");
     }
@@ -64,78 +66,94 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 90),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 15),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: TextField(
-                      controller: _emailController,
-                      decoration: InputDecoration(
-                        hintText: 'employee email',
-                        border: InputBorder.none,
-                        hintStyle: TextStyle(color: colorGrey),
-                        contentPadding: EdgeInsets.all(0),
+              child: Form(
+                key: _keyValidatorLogin,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 15),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(15),
                       ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 15),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: TextField(
-                      obscureText: _obscureText,
-                      controller: _passwordController,
-                      decoration: InputDecoration(
-                        hintText: 'employee password',
-                        border: InputBorder.none,
-                        hintStyle: TextStyle(
-                          color: colorGrey,
+                      child: TextFormField(
+                        controller: _emailController,
+                        decoration: InputDecoration(
+                          hintText: 'employee email',
+                          border: InputBorder.none,
+                          hintStyle: TextStyle(color: colorGrey),
+                          contentPadding: EdgeInsets.all(0),
                         ),
-                        // lihat dan tutup field password
-                        suffixIcon: _obscureText == true
-                            ? IconButton(
-                                onPressed: () {
-                                  setState(() {
-                                    _obscureText = false;
-                                  });
-                                },
-                                icon: Icon(
-                                  Icons.remove_red_eye,
-                                ),
-                              )
-                            : IconButton(
-                                onPressed: () {
-                                  setState(() {
-                                    _obscureText = true;
-                                  });
-                                },
-                                icon: Icon(
-                                  Icons.visibility_off,
-                                ),
-                              ),
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'masukkan email anda untuk login';
+                          } else {
+                            _keyValidatorLogin.currentState;
+                          }
+                          return null;
+                        },
                       ),
                     ),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      // aksi lupa password
-                    },
-                    child: Text(
-                      "Lupa Password?",
-                      style: TextStyle(color: Colors.red),
+                    SizedBox(
+                      height: 10,
                     ),
-                  ),
-                ],
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 15),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: TextField(
+                        obscureText: _obscureText,
+                        controller: _passwordController,
+                        decoration: InputDecoration(
+                          hintText: 'employee password',
+                          border: InputBorder.none,
+                          hintStyle: TextStyle(
+                            color: colorGrey,
+                          ),
+                          // lihat dan tutup field password
+                          suffixIcon: _obscureText == true
+                              ? IconButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      _obscureText = false;
+                                    });
+                                  },
+                                  icon: Icon(
+                                    Icons.remove_red_eye,
+                                  ),
+                                )
+                              : IconButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      _obscureText = true;
+                                    });
+                                  },
+                                  icon: Icon(
+                                    Icons.visibility_off,
+                                  ),
+                                ),
+                        ),
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LupaPassword(),
+                          ),
+                        );
+                      },
+                      child: Text(
+                        "Lupa Password?",
+                        style: TextStyle(color: Colors.red),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
             Container(
@@ -163,7 +181,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: ElevatedButton.styleFrom(
                       primary: blueColor, elevation: 0),
                   onPressed: () {
-                    signIn();
+                    if (_keyValidatorLogin.currentState!.validate()) {
+                      signIn();
+                    }
                   },
                   child: Center(
                     child: Text(
